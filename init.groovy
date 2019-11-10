@@ -15,7 +15,7 @@ hudsonRealm.createAccount('admin', initialPassword)
 instance.setSecurityRealm(hudsonRealm)
 
 def initialPasswordFilePath = instance.getRootDir().getAbsolutePath() + '/secrets/initialPassword'
-def initialPasswordFile = new File()
+def initialPasswordFile = new File(initialPasswordFilePath)
 initialPasswordFile << initialPassword
 initialPasswordFile << '\n'
 
