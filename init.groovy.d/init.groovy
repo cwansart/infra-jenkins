@@ -1,7 +1,11 @@
-#!groovy
+/**
+ * Creates a default account "admin" with a random password and disables full
+ * access for non-logged in users.
+ */
 
-import jenkins.model.*
-import hudson.security.*
+import jenkins.model.Jenkins
+import hudson.security.HudsonPrivateSecurityRealm
+import hudson.security.FullControlOnceLoggedInAuthorizationStrategy
 
 def instance = Jenkins.get()
 
@@ -25,5 +29,7 @@ println "Written to file: ${initialPasswordFilePath}"
 println '#######################################################################'
 
 def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
+strategy.setAllowAnonymousRead(false)
 instance.setAuthorizationStrategy(strategy)
+instance.setNoUsageStatistics(true)
 instance.save()
