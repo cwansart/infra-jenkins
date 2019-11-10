@@ -14,9 +14,15 @@ def initialPassword = UUID.randomUUID()
 hudsonRealm.createAccount('admin', initialPassword)
 instance.setSecurityRealm(hudsonRealm)
 
-def initialPasswordFile = new File(instance.getRootDir().getAbsolutePath() + '/secrets/initialPassword')
+def initialPasswordFilePath = instance.getRootDir().getAbsolutePath() + '/secrets/initialPassword'
+def initialPasswordFile = new File()
 initialPasswordFile << initialPassword
 initialPasswordFile << '\n'
+
+echo "#########################################################################"
+echo "Initial password: ${initialPassword}"
+echo "Written to file: ${initialPasswordFilePath}"
+echo "#########################################################################"
 
 def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
 instance.setAuthorizationStrategy(strategy)
