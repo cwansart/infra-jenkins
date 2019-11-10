@@ -19,10 +19,10 @@ def initialPasswordFile = new File(initialPasswordFilePath)
 initialPasswordFile << initialPassword
 initialPasswordFile << '\n'
 
-echo "#########################################################################"
-echo "Initial password: ${initialPassword}"
-echo "Written to file: ${initialPasswordFilePath}"
-echo "#########################################################################"
+println '######################################################################'
+println "Initial password: ${initialPassword}"
+println "Written to file: ${initialPasswordFilePath}"
+println '#######################################################################'
 
 def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
 instance.setAuthorizationStrategy(strategy)
