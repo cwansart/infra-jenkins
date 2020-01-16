@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.190.2-alpine
+FROM jenkins/jenkins:2.214-alpine
 
 USER root
 COPY init.groovy.d /var/jenkins_home/init.groovy.d/
